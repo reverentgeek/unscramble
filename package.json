@@ -1,39 +1,39 @@
 {
-  "name": "unscramble",
-  "version": "0.1.0",
-  "description": "",
-  "main": "bin/index.js",
-  "scripts": {
-    "build": "nexe",
-    "build:dictionary": "node tasks/rebuild",
-    "start": "node ./",
-    "test": "mocha -r spec/init.js spec/**/*.spec.js",
-    "test:watch": "npm run test -- -w",
-    "pretest": "npm run eslint",
-    "eslint": "eslint --ignore-pattern tmp/* --fix ./"
-  },
-  "author": "David Neal <david@reverentgeek.com> (http://reverentgeek.com)",
-  "license": "MIT",
-  "dependencies": {
-    "fs-jetpack": "^3.1.0",
-    "nexe": "^3.3.7",
-    "ramda": "^0.27.1",
-    "yargs": "^15.4.1"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^7.6.0",
-    "eslint-config-reverentgeek": "^3.0.0",
-    "mocha": "^8.1.1"
-  },
-  "bin": {
-    "unscramble": "./bin/index.js"
-  },
-  "nexe": {
-    "input": "./index.js",
-    "output": "./build/unscramble",
-    "runtime": {
-      "framework": "node"
-    }
-  }
+	"name": "unscramble",
+	"version": "0.2.0",
+	"description": "",
+	"main": "bin/index.js",
+	"scripts": {
+		"build": "nexe",
+		"build:dictionary": "node tasks/rebuild",
+		"start": "node ./",
+		"test": "mocha -r spec/init.js spec/**/*.spec.js",
+		"test:watch": "npm run test -- -w",
+		"pretest": "npm run eslint",
+		"eslint": "eslint --ignore-pattern tmp/* --fix ./"
+	},
+	"author": "David Neal <david@reverentgeek.com> (http://reverentgeek.com)",
+	"license": "MIT",
+	"dependencies": {
+		"fs-jetpack": "^4.1.0",
+		"nexe": "^3.3.7",
+		"ramda": "^0.27.1",
+		"yargs": "^16.2.0"
+	},
+	"devDependencies": {
+		"chai": "^4.2.0",
+		"eslint": "^7.15.0",
+		"eslint-config-reverentgeek": "^3.1.1",
+		"mocha": "^8.2.1"
+	},
+	"bin": {
+		"unscramble": "./bin/index.js"
+	},
+	"nexe": {
+		"input": "./index.js",
+		"output": "./build/unscramble",
+		"runtime": {
+			"framework": "node"
+		}
+	}
 }
