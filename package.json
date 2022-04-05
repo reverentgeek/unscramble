@@ -1,6 +1,6 @@
 {
 	"name": "unscramble",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "",
 	"main": "bin/index.js",
 	"scripts": {
@@ -35,5 +35,9 @@
 		"runtime": {
 			"framework": "node"
 		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/reverentgeek/unscramble.git"
 	}
 }
