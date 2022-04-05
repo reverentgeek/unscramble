@@ -32,7 +32,7 @@ module.exports = dictionaryPath => {
 	};
 
 	const filterWordsThatContainOtherLetters = ( words, scrambleKeys ) => {
-		return R.filter( w => R.none( r => r === false, R.map( key => R.contains( key, scrambleKeys ), R.keys( w.c ) ) ), words );
+		return R.filter( w => R.none( r => r === false, R.map( key => R.includes( key, scrambleKeys ), R.keys( w.c ) ) ), words );
 	};
 
 	const filterOutWordsTooLongOrShort = ( words, length ) => {
