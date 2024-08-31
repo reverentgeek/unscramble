@@ -16,7 +16,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"fs-jetpack": "^5.1.0",
-		"nexe": "^1.1.6",
+		"nexe": "^4.0.0-rc.6",
 		"ramda": "^0.30.1",
 		"yargs": "^17.4.0"
 	},
