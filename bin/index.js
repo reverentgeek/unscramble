@@ -1,20 +1,31 @@
 #!/usr/bin/env node
-"use strict";
+import yargs from "yargs/yargs";
+import { hideBin } from "yargs/helpers";
+import unscramblerFactory from "../src/unscrambler.js";
 
-const yargs = require( "yargs" );
-const unscrambler = require( "../src/unscrambler" )( "./dictionaries" );
+const unscrambler = unscramblerFactory( "./dictionaries" );
 const MIN_ARG_LENGTH = 2;
 
-const argv = yargs
-	.boolean( "x" )
-	.argv;
+const config = yargs( hideBin( process.argv ) )
+	.usage( "Usage: $0 <letters> [--exact-match]" )
+	.option( "exact-match", {
+		alias: "x",
+		type: "boolean",
+		description: "Match words of the same length as the input"
+	} );
+const options = config.parse();
 
-const cmds = argv._;
-const exactMatch = argv.x;
+// console.log( options );
 
-if ( cmds.length < 1 && !exactMatch ) {
+const cmds = options._;
+const exactMatch = options.x;
+
+if ( cmds.length < 1 ) {
 	console.log( "missing required arguments" );
-} else if ( cmds.length > 0 ) {
+	config.showHelp();
+}
+
+if ( cmds.length > 0 ) {
 	const [ letters, length, ...lettersAtEachPostion ] = cmds;
 	const defLength = length ? length : 0;
 	const correctedLength = defLength > letters.length ? letters.length : defLength;

@@ -1,14 +1,14 @@
 {
 	"name": "unscramble",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"description": "",
 	"main": "bin/index.js",
+	"type": "module",
 	"scripts": {
 		"build": "nexe",
 		"build:dictionary": "node tasks/rebuild",
 		"start": "node ./",
-		"test": "mocha -r spec/init.js spec/**/*.spec.js",
-		"test:watch": "npm run test -- -w",
+		"test": "node --test",
 		"pretest": "npm run eslint",
 		"eslint": "eslint --ignore-pattern tmp/* --fix ./"
 	},
@@ -16,15 +16,13 @@
 	"license": "MIT",
 	"dependencies": {
 		"fs-jetpack": "^5.1.0",
-		"nexe": "^1.1.6",
+		"nexe": "^4.0.0-rc.6",
 		"ramda": "^0.30.1",
 		"yargs": "^17.4.0"
 	},
 	"devDependencies": {
-		"chai": "^4.5.0",
-		"eslint": "^8.12.0",
-		"eslint-config-reverentgeek": "^3.1.1",
-		"mocha": "^10.7.3"
+		"eslint": "^9.14.0",
+		"eslint-config-reverentgeek": "^5.1.0"
 	},
 	"bin": {
 		"unscramble": "./bin/index.js"
@@ -39,5 +37,8 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/reverentgeek/unscramble.git"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }

@@ -1,8 +1,6 @@
-"use strict";
+import fs from "fs-jetpack";
 
-const fs = require( "fs-jetpack" );
-
-module.exports = dictionaryPath => {
+export default dictionaryPath => {
 	const getLookupDictionary = key => {
 		return fs.read( `${ dictionaryPath }/dictionary-${ key }.json`, "json" );
 	};

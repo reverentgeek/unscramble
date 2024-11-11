@@ -1,10 +1,8 @@
-"use strict";
+import * as R from "ramda";
+import dictionaryFactory from "./dictionary.js";
+import { getLetterCounts } from "./utils.js";
 
-const R = require( "ramda" );
-const dictionaryFactory = require( "./dictionary" );
-const utils = require( "./utils" );
-
-module.exports = dictionaryPath => {
+export default dictionaryPath => {
 	const dictionary = dictionaryFactory( dictionaryPath );
 
 	const sortByLength = ( a, b ) => {
@@ -66,7 +64,7 @@ module.exports = dictionaryPath => {
 	const unscramble = ( scrambledLetters, length = 0, lettersAtEachPosition = [] ) => {
 		const scramble = scrambledLetters.toLowerCase();
 		const scrambleLetters = scramble.split( "" ).sort();
-		const scrambleCounts = utils.getLetterCounts( scrambleLetters );
+		const scrambleCounts = getLetterCounts( scrambleLetters );
 		const skeys = R.keys( scrambleCounts );
 
 		const curriedLengthEqualOrShorter = R.curry( isLengthEqualOrShorter );

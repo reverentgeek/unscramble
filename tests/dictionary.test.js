@@ -1,12 +1,14 @@
-"use strict";
+import { describe, it } from "node:test";
+import assert from "node:assert";
 
-const dictionary = require( "../src/dictionary" )( "./spec/test-dictionaries" );
+import dictionaryFunc from "../src/dictionary.js";
+const dictionary = dictionaryFunc( "./tests/test-dictionaries" );
 
 describe( "dictionary", () => {
 	it( "returns the correct 'a' dictionary file", () => {
 		const results = dictionary.getLookupDictionary( "a" );
 		const expected = [];
-		results.should.deep.equal( expected );
+		assert.deepEqual( results, expected );
 	} );
 
 	it( "returns the correct 'e' dictionary file", () => {
@@ -74,6 +76,7 @@ describe( "dictionary", () => {
 				}
 			}
 		];
-		results.should.deep.equal( expected );
+		assert.deepEqual( results, expected );
+		// results.should.deep.equal( expected );
 	} );
 } );
