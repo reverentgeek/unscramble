@@ -20,7 +20,7 @@ bacon, banco
 
 ## Requirements
 
-To use this application, you will need [Node.js](https://nodejs.org/) version 12 or higher.
+To use this application, you will need [Node.js](https://nodejs.org/) version 22 or higher.
 
 ## Local Setup From Source Code
 
