@@ -2,7 +2,7 @@ import * as R from "ramda";
 import dictionaryFactory from "./dictionary.js";
 import { getLetterCounts } from "./utils.js";
 
-export default dictionaryPath => {
+export default ( dictionaryPath ) => {
 	const dictionary = dictionaryFactory( dictionaryPath );
 
 	const sortByLength = ( a, b ) => {
@@ -25,7 +25,7 @@ export default dictionaryPath => {
 		return str2.w.length <= str1.length;
 	};
 
-	const getWordsThatContainTheseLetters = letters => {
+	const getWordsThatContainTheseLetters = ( letters ) => {
 		return R.flatten( R.map( dictionary.getLookupDictionary, letters ) );
 	};
 
@@ -39,7 +39,7 @@ export default dictionaryPath => {
 
 	const filterOutWordsContainingMoreOccurrancesOfLetters = ( words, scrambleCounts ) => {
 		const skeys = R.keys( scrambleCounts );
-		return R.filter( w => R.all( r => !r, R.map( key => w.c[ key ] > scrambleCounts[ key ], skeys ) ), words );
+		return R.filter( w => R.all( r => !r, R.map( key => w.c[key] > scrambleCounts[key], skeys ) ), words );
 	};
 
 	const filterOutLettersByPosition = ( words, lettersAtEachPosition ) => {
@@ -47,8 +47,8 @@ export default dictionaryPath => {
 			return words;
 		}
 
-		return R.filter( w => {
-			for( let i = 0; i < lettersAtEachPosition.length; i++ ) {
+		return R.filter( ( w ) => {
+			for ( let i = 0; i < lettersAtEachPosition.length; i++ ) {
 				const posLetters = lettersAtEachPosition[i].toLowerCase();
 				if ( i >= w.w.length ) {
 					return false;

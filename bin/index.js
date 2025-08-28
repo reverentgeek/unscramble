@@ -38,9 +38,9 @@ if ( cmds.length > 0 ) {
 		if ( results.length === 0 ) {
 			console.log( "no results" );
 		} else {
-			for( let i = 3; i <= letters.length; i++ ) {
+			for ( let i = 3; i <= letters.length; i++ ) {
 				const list = results.filter( r => r.length === i );
-				if ( list.length > 0 ){
+				if ( list.length > 0 ) {
 					console.log( "" );
 					let output = ""; // `${ i }-letter: `;
 					while ( list.length ) {
