@@ -15,12 +15,12 @@
 	"license": "MIT",
 	"dependencies": {
 		"fs-jetpack": "^5.1.0",
-		"ramda": "^0.31.3",
+		"ramda": "^0.32.0",
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^9.14.0",
-		"eslint-config-reverentgeek": "^6.0.2"
+		"eslint": "^9.39.1",
+		"eslint-config-reverentgeek": "^6.3.2"
 	},
 	"bin": {
 		"unscramble": "./bin/index.js"
