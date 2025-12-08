@@ -20,7 +20,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^9.39.1",
-		"eslint-config-reverentgeek": "^6.3.2"
+		"eslint-config-reverentgeek": "^6.3.5"
 	},
 	"bin": {
 		"unscramble": "./bin/index.js"
