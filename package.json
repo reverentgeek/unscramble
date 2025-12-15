@@ -19,8 +19,8 @@
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^9.39.1",
-		"eslint-config-reverentgeek": "^6.3.5"
+		"eslint": "^9.39.2",
+		"eslint-config-reverentgeek": "^6.3.6"
 	},
 	"bin": {
 		"unscramble": "./bin/index.js"
@@ -38,5 +38,6 @@
 	},
 	"engines": {
 		"node": ">=22.0.0"
-	}
+	},
+	"packageManager": "pnpm@10.26.0+sha512.3b3f6c725ebe712506c0ab1ad4133cf86b1f4b687effce62a9b38b4d72e3954242e643190fc51fa1642949c735f403debd44f5cb0edd657abe63a8b6a7e1e402"
 }
