@@ -1,6 +1,6 @@
 {
 	"name": "unscramble",
-	"version": "0.3.16",
+	"version": "0.3.17",
 	"description": "",
 	"main": "bin/index.js",
 	"type": "module",
