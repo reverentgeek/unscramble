@@ -1,12 +1,37 @@
 export function getLetterCounts( letters ) {
-	const letterCount = {};
-	for ( let i = 0; i < letters.length; i++ ) {
-		const hasProperty = Object.prototype.hasOwnProperty.call( letterCount, letters[i] );
-		if ( hasProperty ) {
-			letterCount[letters[i]]++;
+	const counts = {};
+	for ( const c of letters ) {
+		if ( Object.hasOwn( counts, c ) ) {
+			counts[c]++;
 		} else {
-			letterCount[letters[i]] = 1;
+			counts[c] = 1;
 		}
 	}
-	return letterCount;
-};
+	return counts;
+}
+
+export function sortLetters( word ) {
+	return word.split( "" ).sort().join( "" );
+}
+
+export function isSubMultiset( smallerCounts, largerCounts ) {
+	for ( const key in smallerCounts ) {
+		if ( ( largerCounts[key] || 0 ) < smallerCounts[key] ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+export function matchesPositionConstraints( word, positions ) {
+	for ( let i = 0; i < positions.length; i++ ) {
+		if ( i >= word.length ) {
+			return false;
+		}
+		const allowed = positions[i].toLowerCase();
+		if ( allowed !== "_" && !allowed.includes( word[i] ) ) {
+			return false;
+		}
+	}
+	return true;
+}

@@ -1,11 +1,13 @@
-import fs from "fs-jetpack";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 export default ( dictionaryPath ) => {
-	const getLookupDictionary = ( key ) => {
-		return fs.read( `${ dictionaryPath }/dictionary-${ key }.json`, "json" );
+	let cache;
+	const load = () => {
+		if ( !cache ) {
+			cache = JSON.parse( readFileSync( join( dictionaryPath, "dictionary.json" ), "utf8" ) );
+		}
+		return cache;
 	};
-
-	return {
-		getLookupDictionary
-	};
+	return { load };
 };

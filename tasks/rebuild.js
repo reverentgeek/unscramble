@@ -1,37 +1,31 @@
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { dirname } from "node:path";
 
-import * as R from "ramda";
-import fs from "fs-jetpack";
-import { getLetterCounts } from "../src/utils.js";
+const sortLetters = word => word.split( "" ).sort().join( "" );
 
-function buildLookupDictionary( inputFile, outputDir ) {
-	console.log( `reading word file ./tasks/${ inputFile }...` );
-	const wordFile = fs.read( `./tasks/${ inputFile }` );
-	console.log( "parsing words..." );
-	const words = wordFile.split( "\n" );
-	const alphas = "abcdefghijklmnopqrstuvwxyz".split( "" );
-	const lookup = {};
-	for ( let i = 0; i < alphas.length; i++ ) {
-		lookup[alphas[i]] = [];
-	}
+function buildDictionary( inputFile, outputFile ) {
+	console.log( `reading ${ inputFile }...` );
+	const words = readFileSync( inputFile, "utf8" )
+		.split( "\n" )
+		.map( w => w.trim().toLowerCase() )
+		.filter( Boolean );
 
-	for ( let i = 0; i < words.length; i++ ) {
-		const word = { w: "", c: 0 };
-		word.w = words[i].toLowerCase();
-		word.c = getLetterCounts( words[i] );
-		const keys = R.keys( word.c );
-		for ( let j = 0; j < keys.length; j++ ) {
-			lookup[keys[j]].push( word );
+	console.log( `indexing ${ words.length } words...` );
+	const dict = {};
+	for ( const word of words ) {
+		const key = sortLetters( word );
+		if ( !dict[key] ) {
+			dict[key] = [ word ];
+		} else if ( !dict[key].includes( word ) ) {
+			dict[key].push( word );
 		}
 	}
 
-	fs.remove( `${ outputDir }/*.json` );
-
-	for ( let i = 0; i < alphas.length; i++ ) {
-		console.log( `writing ${ outputDir }/dictionary-${ alphas[i] }` );
-		fs.write( `${ outputDir }/dictionary-${ alphas[i] }.json`, lookup[alphas[i]] );
-	}
-};
+	mkdirSync( dirname( outputFile ), { recursive: true } );
+	console.log( `writing ${ outputFile }...` );
+	writeFileSync( outputFile, JSON.stringify( dict ) );
+}
 
 console.log( "rebuilding lookup dictionary..." );
-buildLookupDictionary( "testwords.txt", "./tests/test-dictionaries" );
-buildLookupDictionary( "words.txt", "./dictionaries" );
+buildDictionary( "./tasks/testwords.txt", "./tests/test-dictionaries/dictionary.json" );
+buildDictionary( "./tasks/words.txt", "./dictionaries/dictionary.json" );

@@ -1,6 +1,6 @@
 # Unscramble
 
-Takes a string of letters and returns all possible words.
+Takes a string of letters and returns all valid dictionary words that can be formed from those letters.
 
 ```sh
 > unscramble cabno
@@ -10,7 +10,15 @@ abo, ban, boa, cab, can, cob, con, nab, nob, oba, oca
 bacon, banco
 ```
 
-You can also specify the exact number of letters to match.
+## Usage
+
+```
+unscramble <letters> [length] [pos1 pos2 ...] [--exact-match]
+```
+
+### Filter by word length
+
+Pass a length as the second positional argument to return only words of that length.
 
 ```sh
 > unscramble cabno 5
@@ -18,28 +26,54 @@ You can also specify the exact number of letters to match.
 bacon, banco
 ```
 
-## Requirements
+### Match every input letter
 
-To use this application, you will need [Node.js](https://nodejs.org/) version 22 or higher.
-
-## Local Setup From Source Code
-
-1. Clone or download and unzip the source code.
-2. Open your terminal or command prompt and change to the source code folder.
-3. Install dependencies
+`--exact-match` (or `-x`) restricts results to words that use every input letter.
 
 ```sh
-npm install
+> unscramble cabno -x
+
+bacon, banco
 ```
 
-Run the app locally:
+### Constrain letters at specific positions
+
+Pass a pattern after the length to constrain individual positions. Use `_` as a wildcard.
 
 ```sh
+> unscramble cabno 5 b___n
+
+bacon
+```
+
+Each position can also be given as its own argument, which lets you list multiple allowed letters per position (e.g. `bc` means "b or c"):
+
+```sh
+> unscramble cabno 5 b _ _ _ n
+```
+
+## Requirements
+
+Node.js version 22 or higher.
+
+## Local setup
+
+```sh
+pnpm install
+pnpm test
 node . cabno
 ```
 
-Install the app locally from source code:
+Install globally from source:
 
 ```sh
 npm install -g .
+```
+
+## Rebuilding the dictionary
+
+The bundled dictionary is generated from `tasks/words.txt`:
+
+```sh
+pnpm run build:dictionary
 ```

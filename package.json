@@ -1,21 +1,19 @@
 {
 	"name": "unscramble",
-	"version": "0.3.19",
-	"description": "",
+	"version": "0.4.0",
+	"description": "Find all valid dictionary words that can be formed from a set of letters.",
 	"main": "bin/index.js",
 	"type": "module",
 	"scripts": {
 		"build:dictionary": "node tasks/rebuild",
 		"start": "node ./",
-		"test": "node --test",
+		"test": "node --test --experimental-test-coverage",
 		"pretest": "npm run eslint",
 		"eslint": "eslint --ignore-pattern tmp/* --fix ./"
 	},
 	"author": "David Neal <david@reverentgeek.com> (http://reverentgeek.com)",
 	"license": "MIT",
 	"dependencies": {
-		"fs-jetpack": "^5.1.0",
-		"ramda": "^0.32.0",
 		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
@@ -24,13 +22,6 @@
 	},
 	"bin": {
 		"unscramble": "./bin/index.js"
-	},
-	"nexe": {
-		"input": "./index.js",
-		"output": "./build/unscramble",
-		"runtime": {
-			"framework": "node"
-		}
 	},
 	"repository": {
 		"type": "git",
