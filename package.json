@@ -1,6 +1,6 @@
 {
 	"name": "unscramble",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "Find all valid dictionary words that can be formed from a set of letters.",
 	"main": "bin/index.js",
 	"type": "module",
