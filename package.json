@@ -14,11 +14,11 @@
 	"author": "David Neal <david@reverentgeek.com> (http://reverentgeek.com)",
 	"license": "MIT",
 	"dependencies": {
-		"yargs": "^18.0.0"
+		"yargs": "^18.1.0"
 	},
 	"devDependencies": {
 		"eslint": "^10.8.0",
-		"eslint-config-reverentgeek": "^7.1.14"
+		"eslint-config-reverentgeek": "^7.1.15"
 	},
 	"bin": {
 		"unscramble": "./bin/index.js"
