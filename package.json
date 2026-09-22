@@ -14,7 +14,7 @@
 	"author": "David Neal <david@reverentgeek.com> (http://reverentgeek.com)",
 	"license": "MIT",
 	"dependencies": {
-		"yargs": "^18.1.0"
+		"yargs": "^18.2.0"
 	},
 	"devDependencies": {
 		"eslint": "^10.11.0",
